@@ -1,0 +1,43 @@
+version: '3.2'
+
+services:
+  urtutor-app:
+    container_name: increment-svc-app
+    build:
+      context: .
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - '5000:5000'
+    depends_on:
+      - increment-svc-mongo
+      - increment-svc-redis
+    command: ["npm", "run", "start-dev"]
+    networks:
+      - increment_svc_default
+
+  urtutor-mongo:
+    image: mongo:latest
+    container_name: increment-svc-mongo
+    volumes:
+      - ./mongodb/data:/data/db
+      - ./mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports:
+      - '27077-27079:27017-27019'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: increment-svc-db
+    networks:
+      - increment_svc_default
+
+  urtutor-redis:
+    image: redis:latest
+    container_name: increment-svc-redis
+    ports:
+      - '6389:6379'
+    networks:
+      - increment_svc_default
+
+networks:
+  increment_svc_default:
