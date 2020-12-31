@@ -6,6 +6,7 @@ require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const {connectToDB} = require('./components/mongodb/MongoConnector');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors()); // Enable CORS
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -40,5 +42,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Connect to database
+connectToDB();
 
 module.exports = app;
