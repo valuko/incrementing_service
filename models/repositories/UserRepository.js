@@ -31,6 +31,18 @@ class UserRepository {
     return User.findOne({email});
   }
 
+  static findByToken(token) {
+    return User.findOne({token});
+  }
+
+  /**
+   * Fetch the User entity with the password
+   * @param {String} email
+   * @return {Promise<User|null>}
+   */
+  static fetchUserPassword(email) {
+    return User.findOne({email}, 'password');
+  }
 }
 
 module.exports = {UserRepository};
