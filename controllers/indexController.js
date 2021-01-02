@@ -31,11 +31,12 @@ exports.loginAction = async (req, res) => {
   }
 
   try {
-    const user = await UserDomain.authenticateUser(email, password);
-    if (!user) {
+    const authenticated = await UserDomain.authenticateUser(email, password);
+    if (!authenticated) {
       return res.status(401).json({error: {message: 'Incorrect email/password'}});
     }
 
+    const user = await UserDomain.getUser(email);
     return res.status(200).json({
       data: {token: user.token},
     });

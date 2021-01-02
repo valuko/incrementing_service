@@ -10,7 +10,7 @@ exports.connectToDB = async () => {
       useFindAndModify: false,
     });
     console.log(
-        `MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold,
+        `MongoDB Connected: ${conn.connection.host}`,
     );
 
     return conn;

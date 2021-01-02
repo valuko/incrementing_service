@@ -1,8 +1,8 @@
 'use strict';
-const {UserDomain} = require('../models/domain/UserDomain');
+const UserDomain = require('../models/domain/UserDomain');
 
 const requireLogin = async (req, res, next) => {
-  const authHeader = req.header('authorization');
+  const authHeader = req.header('Authorization');
   if (!authHeader) return res.status(401).json({error: {message: 'Authorization header not found'}});
   const splitHeader = authHeader.split(' ');
 
