@@ -1,2 +1,4 @@
 # incrementing_service
 Implementing an integer incrementing service in NodeJS
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7e15a2d12a2abb80e53f#?env%5BIncrement_svc_test%5D=W3sia2V5IjoiaW5jcmVtZW50X3N2Y190b2tlbiIsInZhbHVlIjoiZmI4ZmQ2NDMtYThjMS00MDE2LWI4NzctZWIwM2Q3NDNlMDQ5IiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJob3N0IiwidmFsdWUiOiIxMDQuMjQ4LjEzLjEwOCIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY3VycmVudF9udW0iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9XQ==)
